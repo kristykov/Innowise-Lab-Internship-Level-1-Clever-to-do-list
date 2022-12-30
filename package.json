@@ -16,7 +16,7 @@
     "build": "webpack --env mode=prod",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint .",
+    "lint": "eslint \"src/**\"",
     "lint:fix": "eslint --fix .",
     "prepare": "husky install"
   },
