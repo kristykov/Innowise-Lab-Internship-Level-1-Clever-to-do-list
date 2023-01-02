@@ -26,6 +26,7 @@
         "parser": "flow"
       }
     ],
-    "quotes": [2, "double", { "avoidEscape": true }]
+    "quotes": [2, "double", { "avoidEscape": true }],
+    "import/prefer-default-export": "off"
   }
 }
