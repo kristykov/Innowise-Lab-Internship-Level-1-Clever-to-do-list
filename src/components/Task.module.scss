@@ -1,0 +1,91 @@
+.task-list-item-header {
+  margin: 30px;
+}
+
+.task-item-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.task-header-container {
+  display: flex;
+  align-items: center;
+}
+
+.task-title {
+  justify-content: flex-end;
+  margin: 30px;
+}
+
+.new-task-form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 60px;
+}
+
+.new-task-title-container {
+  display: flex;
+  align-items: center;
+}
+
+.new-task-title {
+}
+
+.new-task-description {
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
+.new-task-description-text {
+  width: 330px;
+  height: 300px;
+  outline: none;
+  border: none;
+  font-family: var(--body-font);
+}
+
+.new-task-description-text::placeholder {
+  font-family: var(--body-font);
+}
+
+.edit-task-input::placeholder {
+  color: black;
+}
+
+.new-task-input {
+  width: 250px;
+  font-size: 18px;
+  border: none;
+  outline: none;
+}
+
+.task-control-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 113px;
+}
+
+.task-submit-btn {
+  width: 200px;
+  height: 40px;
+  margin-top: 40px;
+  border-radius: 11px;
+  border: none;
+  background-color: var(--orange-color);
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--dark-orange-color);
+  }
+}
+
+.task-list-item-back-icon {
+  width: 26px;
+  height: 26px;
+}

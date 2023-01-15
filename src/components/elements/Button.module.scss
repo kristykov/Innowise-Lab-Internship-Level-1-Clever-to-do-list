@@ -1,0 +1,27 @@
+.button {
+  background: var(--orange-color);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover,
+  &:active {
+    background-color: var(--dark-orange-color);
+  }
+}
+
+.add-task-btn {
+  height: 40px;
+  font-size: 18px;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 440px) {
+  .add-task-btn {
+    font-size: 14px;
+  }
+}

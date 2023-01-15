@@ -1,0 +1,128 @@
+.container {
+  margin: 65px;
+  /* align-items: center; */
+  display: flex;
+  flex-direction: column;
+}
+
+.task-list-headline {
+  margin-bottom: 30px;
+}
+
+.task-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.task-list-item-label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.task-list-item-input {
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.task-list-item-checkmark {
+  position: relative;
+  height: 25px;
+  width: 25px;
+  margin-right: 20px;
+  border: 2px solid var(--orange-color);
+  border-radius: 50%;
+}
+
+.task-list-item-label:hover ~ .task-list-item-checkmark {
+  background-color: rgb(241, 227, 227);
+}
+
+.task-list-item-checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.task-list-item-checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.task-list-item-input:checked ~ .task-list-item-checkmark:after {
+  display: block;
+}
+
+.task-list-item-label
+  .task-list-item-input:checked
+  ~ .task-list-item-checkmark {
+  background-color: var(--orange-color);
+}
+
+.task-list-item-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 30px;
+  cursor: pointer;
+  transition: filter 0.1s ease;
+}
+
+.task-list-item-icon:hover {
+  filter: invert(69%) sepia(94%) saturate(2515%) hue-rotate(332deg)
+    brightness(101%) contrast(92%);
+}
+
+@media screen and (max-width: 440px) {
+  .container {
+    margin: 30px;
+  }
+
+  .task-list-headline {
+    font-size: 20px;
+  }
+
+  .task-list-icon-container {
+    display: flex;
+  }
+
+  .task-list-item-label {
+    font-size: 12px;
+  }
+
+  .task-list-item-checkmark {
+    width: 15px;
+    height: 15px;
+  }
+
+  .task-list-item-checkmark:after {
+    left: 4px;
+    top: 1px;
+    width: 2px;
+    height: 5px;
+    border-width: 0 2px 2px 0;
+  }
+
+  .task-list-item-icon {
+    width: 14px;
+    height: 14px;
+    margin-left: 15px;
+  }
+}

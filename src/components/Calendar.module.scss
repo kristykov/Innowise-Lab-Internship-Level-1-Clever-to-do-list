@@ -1,0 +1,20 @@
+.calendar {
+  overflow-x: auto;
+  margin: 20px 65px;
+  padding: 6px;
+
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+  }
+}
+
+.tasks-monitoring {
+}
+
+.tasks-completed {
+}
+
+.tasks-incompleted {
+}

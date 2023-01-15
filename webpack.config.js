@@ -42,7 +42,23 @@ module.exports = ({ mode }) => ({
         use: [{ loader: "file-loader" }],
       },
       {
+        test: /\.module\.s(a|c)ss$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: {
+                localIdentName: "[name]__[local]___[hash:base64:5]",
+              },
+            },
+          },
+          "sass-loader",
+        ],
+      },
+      {
         test: /\.(css|scss)$/,
+        exclude: /\.module\.s(a|c)ss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
