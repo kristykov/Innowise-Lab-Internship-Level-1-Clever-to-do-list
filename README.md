@@ -1,6 +1,6 @@
 # Clever to-do tassker
 
-Welcome to our Todo app! This app is designed to help you keep track of tasks and manage your to-do list.
+Welcome to Clever to-do tassker app! This app is designed to help you keep track of tasks and manage your to-do list.
 
 ## Usage
 
@@ -24,6 +24,8 @@ All data is available during the session, even if the user reloads the page.
 
 ## Task
 
+[Link to the task](https://drive.google.com/file/d/1tG-0kA8bmJYkExUFQUzUT-AgxzVtohFE/view?usp=sharing)
+
 ## Technologies used in the project
 
 ![ReactJS](https://img.shields.io/badge/-ReactJS-0D1117?style=for-the-badge&logo=React)
@@ -34,7 +36,7 @@ All data is available during the session, even if the user reloads the page.
 ![Eslint](https://img.shields.io/badge/-Eslint-0D1117?style=for-the-badge&logo=Eslint)
 ![Husky](https://img.shields.io/badge/-Husky-0D1117?style=for-the-badge&logo=Husky)
 
-There were also used ["react-redux-firebase"], ["redux-persist"]
+There are also [react-redux-firebase], [redux-persist].
 
 ## Getting Started
 
@@ -44,7 +46,7 @@ Install the necessary dependencies using `npm install`
 
 Run the app using `npm start`
 
-Once the app is runningpen [http://localhost:8080](http://localhost:8080) with your browser to see the result.
+Once the app is running open [http://localhost:8080](http://localhost:8080) with your browser to see the result.
 
 After that you can create an account or log in with an existing one.
 
@@ -62,11 +64,12 @@ The Todo App uses Firebase as the database to store all tasks. The Firebase Real
 ### Data Structure
 
 The database is structured in a hierarchical format, with the top-level being the `users` node. Under the `users` node, each user is represented by their unique user ID. Under each user ID, there is a `todos` node that contains all the tasks for that user. Each task is represented by a unique task ID and contains the following properties:
-`completed`: A boolean indicating whether the task has been completed or not
-`date`: The date the task is due
-`description`: A brief description of the task
-`title`: The title of the task
-`todoID`: A unique task ID
+
+- `completed`: A boolean indicating whether the task has been completed or not
+- `date`: The date the task is due
+- `description`: A brief description of the task
+- `title`: The title of the task
+- `todoID`: A unique task ID
 
 ### Authentication
 
@@ -79,14 +82,15 @@ The app uses Firebase's JavaScript SDK to perform CRUD (Create, Read, Update, De
 ## Folder Structure
 
 The Todo App's codebase is organized into the following main folders:
-`src`: The root folder that contains all the source code for the app
-`src/assets`: This folder contains all the static assets such as images, icons, and fonts that are used in the app.
-`src/components`: This folder contains all the reusable components that make up the UI of the app.
-`src/navigation`: This folder contains all the navigation logic for the app, including routing and navigation between pages.
-`src/pages`: This folder contains all the individual pages that make up the app, such as the login page, the main page, and the registration page.
-`src/store`: This folder contains all the logic for managing the app's state, including actions and reducers for the tasks and user data.
-`src/App.jsx`: The root component for the app that renders the different pages and components based on the current route.
-`src/firebase-config.js`: This file contains the configuration settings for connecting to the Firebase database.
-`src/index.css`: The main CSS file for the app that sets the default styles for the app.
-`src/index.html`: The main HTML file that loads the app.
-`src/index.jsx`: The entry point for the app that sets up the React context and renders the root component.
+
+- `src`: The root folder that contains all the source code for the app
+- `src/assets`: This folder contains all the static assets such as images, icons, and fonts that are used in the app.
+- `src/components`: This folder contains all the reusable components that make up the UI of the app.
+- `src/navigation`: This folder contains all the navigation logic for the app, including routing and navigation between pages.
+- `src/pages`: This folder contains all the individual pages that make up the app, such as the login page, the main page, and the registration page.
+- `src/store`: This folder contains all the logic for managing the app's state, including actions and reducers for the tasks and user data.
+- `src/App.jsx`: The root component for the app that renders the different pages and components based on the current route.
+- `src/firebase-config.js`: This file contains the configuration settings for connecting to the Firebase database.
+- `src/index.css`: The main CSS file for the app that sets the default styles for the app.
+- `src/index.html`: The main HTML file that loads the app.
+- `src/index.jsx`: The entry point for the app that sets up the React context and renders the root component.
