@@ -33,9 +33,6 @@ const CalendarItem = ({ day, setActive, activeDay }) => {
       new Date(task.date.seconds * 1000).getDate() === day.day.getDate() &&
       new Date(task.date.seconds * 1000).getDay() === day.day.getDay()
     ) {
-      // console.log(new Date(task.date.seconds * 1000).getDate());
-      // console.log("DAY:", day);
-      // console.log("Day.getDate():", day.getDate());
       isThereUncompletedTasks = true;
     }
   });

@@ -15,7 +15,7 @@ export const activeDaySlice = createSlice({
   },
 });
 
-export const activeDay = (state) => state.activeDay.activeDay;
+export const activeDay = (state) => state.activeDay.activeDay; // selectActivatDate
 
 export const activeDayAction = activeDaySlice.actions;
 

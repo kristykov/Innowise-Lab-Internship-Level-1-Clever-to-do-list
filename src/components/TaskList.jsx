@@ -13,7 +13,7 @@ const TaskList = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { uid } = useSelector((state) => state.firebase.auth);
-  const [filteredAgainTasks, setFilteredTasks] = useState([]);
+  const [filteredTasks, setFilteredTasks] = useState([]);
   const dispatch = useDispatch();
 
   const selectedDay = useSelector(activeDay);
@@ -43,13 +43,13 @@ const TaskList = () => {
 
   useEffect(() => {
     if (tasks.length > 0) {
-      const filteredNewTasks = tasks.filter(
+      const filteredTasksArray = tasks.filter(
         (task) =>
-          new Date(task.date.seconds * 1000).getDate() ===
-          new Date(selectedDay).getDate(),
+          new Date(task.date.seconds * 1000).toDateString() ===
+          new Date(selectedDay).toDateString(),
       );
 
-      setFilteredTasks(filteredNewTasks);
+      setFilteredTasks(filteredTasksArray);
       dispatch(monthTasksAction.addTasks(JSON.stringify(tasks)));
     }
   }, [tasks, selectedDay]);
@@ -60,17 +60,20 @@ const TaskList = () => {
       {error && <div>Error: {error.message}</div>}
       {!loading && !error && (
         <>
-          <h2 className="task-list-headline">
-            Today {filteredAgainTasks.length}
-            {filteredAgainTasks.length === 1 ? " task" : " tasks"}
+          <h2>
+            Today {filteredTasks.length}
+            {filteredTasks.length === 1 ? " task" : " tasks"}
           </h2>
+          <h4 className="task-list-headline">
+            {new Date(selectedDay).toDateString()}
+          </h4>
           <ul className="task-list">
-            {filteredAgainTasks.map((filteredTasks) => (
+            {filteredTasks.map((task) => (
               <TaskListItem
-                key={filteredTasks.todoID}
-                id={filteredTasks.todoID}
-                status={filteredTasks.completed}
-                title={filteredTasks.title}
+                key={task.todoID}
+                id={task.todoID}
+                status={task.completed}
+                title={task.title}
               />
             ))}
           </ul>

@@ -6,7 +6,6 @@
   flex-basis: 0;
   min-width: 45px;
   padding: 6px;
-  // border: 1px solid gray;
   border-radius: 12px;
   font-size: var(--small-font-size);
   cursor: pointer;
@@ -14,12 +13,10 @@
 
 .active {
   border: 2px solid var(--orange-color);
-  // background-color: aqua;
 }
 
 .non-active {
   box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
-  // background-color: antiquewhite;
 }
 
 .tasks-monitoring {

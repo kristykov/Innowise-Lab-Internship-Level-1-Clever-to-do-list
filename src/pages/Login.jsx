@@ -1,28 +1,13 @@
 import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-// import { useDispatch } from "react-redux";
 import { getFirebase } from "react-redux-firebase";
-// import { authAction } from "../store/activeDay/activeDaySlice";
 import classes from "./Register.module.scss";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
-  //   const dispatch = useDispatch();
   const [user, setUser] = useState(null);
   const [errorAuth, setErrorAuth] = useState(null);
-  //   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  //   useEffect(() => {
-  //     const token = localStorage.getItem("Auth token");
-  //     if (token) {
-  //       setIsLoggedIn(true);
-  //     } else {
-  //       setIsLoggedIn(false);
-  //     }
-  //   }, []);
-
-  console.log(user);
 
   const onSubmit = (data) => {
     const firebase = getFirebase();
