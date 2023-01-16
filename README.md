@@ -59,7 +59,7 @@ User password: 111111
 
 ## Database snapshot
 
-The Todo App uses Firebase as the database to store all tasks. The Firebase Realtime Database is a cloud-hosted NoSQL database that allows data to be stored and retrieved in real-time. This means that any changes made to the database are immediately reflected in the app, providing a seamless user experience.
+The Clever to-do tassker uses Firebase as the database to store all tasks. The Firebase Realtime Database is a cloud-hosted NoSQL database that allows data to be stored and retrieved in real-time. This means that any changes made to the database are immediately reflected in the app, providing a seamless user experience.
 
 ### Data Structure
 
@@ -81,13 +81,13 @@ The app uses Firebase's JavaScript SDK to perform CRUD (Create, Read, Update, De
 
 ## Folder Structure
 
-The Todo App's codebase is organized into the following main folders:
+The Clever to-do tassker's codebase is organized into the following main folders:
 
 - `src`: The root folder that contains all the source code for the app
-- `src/assets`: This folder contains all the static assets such as images, icons, and fonts that are used in the app.
+- `src/assets`: This folder contains all the static assets such as icons that are used in the app.
 - `src/components`: This folder contains all the reusable components that make up the UI of the app.
 - `src/navigation`: This folder contains all the navigation logic for the app, including routing and navigation between pages.
-- `src/pages`: This folder contains all the individual pages that make up the app, such as the login page, the main page, and the registration page.
+- `src/pages`: This folder contains all the individual pages that make up the app, such as the login page, the home page, the registration page, and the task page.
 - `src/store`: This folder contains all the logic for managing the app's state, including actions and reducers for the tasks and user data.
 - `src/App.jsx`: The root component for the app that renders the different pages and components based on the current route.
 - `src/firebase-config.js`: This file contains the configuration settings for connecting to the Firebase database.
