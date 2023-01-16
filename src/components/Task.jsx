@@ -13,7 +13,8 @@ import classes from "./Task.module.scss";
 const Task = () => {
   const allTasks = useSelector(monthTasks);
   const { id } = useParams();
-  const currentTask = JSON.parse(allTasks).find((task) => task.todoID === id);
+  const currentTask = allTasks.find((task) => task.todoID === id);
+  // const currentTask = JSON.parse(allTasks).find((task) => task.todoID === id);
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const dispatch = useDispatch();

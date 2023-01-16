@@ -13,10 +13,12 @@ const CalendarItem = ({ day, setActive, activeDay }) => {
 
   useEffect(() => {
     setCompletedTasks(
-      JSON.parse(allTasks).filter((task) => task.completed === true),
+      allTasks.filter((task) => task.completed === true),
+      // JSON.parse(allTasks).filter((task) => task.completed === true),
     );
     setUncompletedTask(
-      JSON.parse(allTasks).filter((task) => task.completed === false),
+      allTasks.filter((task) => task.completed === false),
+      // JSON.parse(allTasks).filter((task) => task.completed === false),
     );
   }, [allTasks]);
 

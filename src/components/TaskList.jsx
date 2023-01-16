@@ -50,7 +50,8 @@ const TaskList = () => {
       );
 
       setFilteredTasks(filteredTasksArray);
-      dispatch(monthTasksAction.addTasks(JSON.stringify(tasks)));
+      dispatch(monthTasksAction.addTasks(tasks));
+      // dispatch(monthTasksAction.addTasks(JSON.stringify(tasks)));
     }
   }, [tasks, selectedDay]);
 
