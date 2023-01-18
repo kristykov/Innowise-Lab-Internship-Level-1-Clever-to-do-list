@@ -20,7 +20,7 @@ const CalendarItem = ({ day, setActive, activeDay }) => {
       allTasks.filter((task) => task.completed === false),
       // JSON.parse(allTasks).filter((task) => task.completed === false),
     );
-  }, [allTasks]);
+  }, [allTasks, activeDay]);
 
   completedTasks.forEach((task) => {
     if (

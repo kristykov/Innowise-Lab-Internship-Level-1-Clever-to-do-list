@@ -16,6 +16,8 @@ const TaskList = () => {
   const [filteredTasks, setFilteredTasks] = useState([]);
   const dispatch = useDispatch();
 
+  console.log(uid);
+
   const selectedDay = useSelector(activeDay);
 
   useEffect(() => {
@@ -30,6 +32,8 @@ const TaskList = () => {
         (snapshot) => {
           const newTasks = snapshot.docs.map((doc) => doc.data());
           setTasks(newTasks);
+          // dispatch(monthTasksAction.addTasks(tasks));
+          // dispatch(monthTasksAction.addTasks(JSON.stringify(tasks)));
           setLoading(false);
         },
         (err) => {
@@ -40,6 +44,7 @@ const TaskList = () => {
 
     return () => unsubscribe();
   }, [firestore, uid]);
+  console.log(tasks);
 
   useEffect(() => {
     if (tasks.length > 0) {
@@ -53,7 +58,7 @@ const TaskList = () => {
       dispatch(monthTasksAction.addTasks(tasks));
       // dispatch(monthTasksAction.addTasks(JSON.stringify(tasks)));
     }
-  }, [tasks, selectedDay]);
+  }, [tasks, selectedDay, firestore, uid]);
 
   return (
     <div className="container">

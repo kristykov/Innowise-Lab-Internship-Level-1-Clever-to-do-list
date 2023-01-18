@@ -17,7 +17,6 @@ const Login = () => {
       .then((res) => {
         const userId = res.user.uid;
         localStorage.setItem("UserId", userId);
-        <Navigate replace to="/home" />;
         setUser(userId);
       })
       .catch((error) => {
