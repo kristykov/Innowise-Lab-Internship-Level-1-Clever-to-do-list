@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { isAuthenticated } from "../store/auth/authSlice";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 
@@ -7,12 +9,13 @@ import HomePage from "../pages/HomePage";
 import Task from "../components/Task";
 
 const Navigation = () => {
-  const userId = localStorage.getItem("UserId");
-  const [authenticated, setAuthenticated] = useState(userId);
+  const authenticated = useSelector(isAuthenticated);
+  // const userId = localStorage.getItem("UserId");
+  // const [authenticated, setAuthenticated] = useState(userId);
 
-  useEffect(() => {
-    setAuthenticated(userId);
-  }, []);
+  // useEffect(() => {
+  //   setAuthenticated(userId);
+  // }, [userId]);
 
   return (
     <BrowserRouter>

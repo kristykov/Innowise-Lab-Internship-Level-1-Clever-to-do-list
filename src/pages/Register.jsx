@@ -1,23 +1,14 @@
 import React, { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { getFirebase } from "react-redux-firebase";
 import classes from "./Register.module.scss";
 
 const Register = () => {
   const { register, handleSubmit } = useForm();
-  const [user, setUser] = useState(null);
   const [errorAuth, setErrorAuth] = useState(null);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem("Auth token");
-  //   if (token) {
-  //     setIsLoggedIn(true);
-  //   } else {
-  //     setIsLoggedIn(false);
-  //   }
-  // }, []);
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     const firebase = getFirebase();
@@ -27,7 +18,7 @@ const Register = () => {
       .then((res) => {
         const userId = res.user.uid;
         localStorage.setItem("UserId", userId);
-        setUser(userId);
+        navigate("/home");
       })
       .catch((error) => {
         if (error.code === "auth/email-already-in-use") {
@@ -80,7 +71,6 @@ const Register = () => {
             </a>
           </p>
         )}
-        {user && <Navigate replace to="/home" />}
       </div>
     </div>
   );

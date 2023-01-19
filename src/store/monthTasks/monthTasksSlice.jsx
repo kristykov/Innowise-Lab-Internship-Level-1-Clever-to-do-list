@@ -8,10 +8,10 @@ export const monthTasksSlice = createSlice({
   name: "monthTasks",
   initialState,
   reducers: {
-    addTasks: (state, action) => {
-      // eslint-disable-next-line no-param-reassign
-      state.monthTasks = action.payload;
-    },
+    addTasks: (state, action) => ({
+      ...state,
+      monthTasks: action.payload,
+    }),
   },
 });
 

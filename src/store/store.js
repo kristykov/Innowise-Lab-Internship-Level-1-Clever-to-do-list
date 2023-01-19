@@ -1,33 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import {
-  FLUSH,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-  REHYDRATE,
-} from "redux-persist";
 import { createFirestoreInstance } from "redux-firestore";
-import persistedReducer from "./rootReducer";
+import rootReducer from "./rootReducer";
 import firebase from "../firebase-config";
 
 const store = configureStore({
-  reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [
-          FLUSH,
-          REHYDRATE,
-          PAUSE,
-          PERSIST,
-          PURGE,
-          REGISTER,
-          "@@reactReduxFirebase/LOGIN",
-          "@@reactReduxFirebase/LOGOUT",
-        ],
-      },
-    }),
+  reducer: rootReducer,
 });
 
 export default store;

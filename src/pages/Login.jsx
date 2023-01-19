@@ -1,13 +1,18 @@
 import React, { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { getFirebase } from "react-redux-firebase";
+import { useDispatch } from "react-redux";
+import { login } from "../store/auth/authSlice";
 import classes from "./Register.module.scss";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
   const [errorAuth, setErrorAuth] = useState(null);
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     const firebase = getFirebase();
@@ -17,7 +22,11 @@ const Login = () => {
       .then((res) => {
         const userId = res.user.uid;
         localStorage.setItem("UserId", userId);
-        setUser(userId);
+        dispatch(login({ userId }));
+        // setUser(userId);
+      })
+      .then(() => {
+        navigate("/home");
       })
       .catch((error) => {
         if (error.code === "auth/wrong-password") {
@@ -27,6 +36,7 @@ const Login = () => {
         }
       });
   };
+
   return (
     <div className={classes.container}>
       <div className={classes["container-card"]}>
@@ -72,7 +82,6 @@ const Login = () => {
             {errorAuth}
           </p>
         )}
-        {user && <Navigate replace to="/home" />}
       </div>
     </div>
   );

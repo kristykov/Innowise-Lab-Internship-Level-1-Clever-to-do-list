@@ -1,17 +1,17 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
   activeDay: new Date().getTime(),
 };
 
 export const activeDaySlice = createSlice({
-  name: "auth",
+  name: "activeDay",
   initialState,
   reducers: {
-    setActiveDay: (state, action) => {
-      // eslint-disable-next-line no-param-reassign
-      state.activeDay = action.payload;
-    },
+    setActiveDay: (state, action) => ({
+      ...state,
+      activeDay: action.payload,
+    }),
   },
 });
 

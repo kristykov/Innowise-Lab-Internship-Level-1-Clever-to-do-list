@@ -14,9 +14,8 @@ const TaskList = () => {
   const [error, setError] = useState(null);
   const { uid } = useSelector((state) => state.firebase.auth);
   const [filteredTasks, setFilteredTasks] = useState([]);
-  const dispatch = useDispatch();
 
-  console.log(uid);
+  const dispatch = useDispatch();
 
   const selectedDay = useSelector(activeDay);
 
@@ -32,7 +31,7 @@ const TaskList = () => {
         (snapshot) => {
           const newTasks = snapshot.docs.map((doc) => doc.data());
           setTasks(newTasks);
-          // dispatch(monthTasksAction.addTasks(tasks));
+          dispatch(monthTasksAction.addTasks(newTasks));
           // dispatch(monthTasksAction.addTasks(JSON.stringify(tasks)));
           setLoading(false);
         },
@@ -43,8 +42,7 @@ const TaskList = () => {
       );
 
     return () => unsubscribe();
-  }, [firestore, uid]);
-  console.log(tasks);
+  }, [dispatch, firestore, uid]);
 
   useEffect(() => {
     if (tasks.length > 0) {
@@ -55,8 +53,6 @@ const TaskList = () => {
       );
 
       setFilteredTasks(filteredTasksArray);
-      dispatch(monthTasksAction.addTasks(tasks));
-      // dispatch(monthTasksAction.addTasks(JSON.stringify(tasks)));
     }
   }, [tasks, selectedDay, firestore, uid]);
 
