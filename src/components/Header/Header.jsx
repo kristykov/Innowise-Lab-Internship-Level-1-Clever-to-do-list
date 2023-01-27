@@ -1,22 +1,26 @@
 import React from "react";
 import { getFirebase } from "react-redux-firebase";
-import { useNavigate } from "react-router-dom";
-import classes from "./Header.module.scss";
-import Button from "./elements/Button";
+import { useNavigate, Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import s from "./Header.module.scss";
+import Button from "../elements/Button";
+import { logout } from "../../store/auth/authSlice";
 
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const logoutHandle = () => {
-    localStorage.removeItem("UserId");
+    localStorage.removeItem("userId");
+    dispatch(logout());
     const firebase = getFirebase();
     firebase.logout().then(() => {
       navigate("/login");
     });
   };
   return (
-    <header className={classes.header}>
-      <a href="#home">Tassker</a>
+    <header className={s.header}>
+      <Link to="/home">Tassker</Link>
       <nav>
         <Button type="button" aria-label="Log out" onClick={logoutHandle}>
           Log out

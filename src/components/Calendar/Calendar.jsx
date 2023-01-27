@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   activeDayAction,
   activeDay as selectActiveDay,
-} from "../store/activeDay/activeDaySlice";
-import { monthTasks } from "../store/monthTasks/monthTasksSlice";
-import CalendarItem from "./CalendarItem";
-import classes from "./Calendar.module.scss";
+} from "../../store/activeDay/activeDaySlice";
+import { monthTasks } from "../../store/monthTasks/monthTasksSlice";
+import CalendarItem from "../CalendarItem/CalendarItem";
+import s from "./Calendar.module.scss";
 
 const Calendar = () => {
   const activeDay = useSelector(selectActiveDay);
@@ -15,9 +15,10 @@ const Calendar = () => {
 
   const dispatch = useDispatch();
 
-  const [firstMonthDays, setFirstMonthDays] = useState([]);
   const [days, setDays] = useState([]);
-  const [trackedMonthDate, setTrackedMonthDate] = useState(new Date());
+  const [trackedMonthDate, setTrackedMonthDate] = useState(
+    new Date().getMonth(),
+  );
 
   const containerRef = useRef(null);
 
@@ -42,25 +43,35 @@ const Calendar = () => {
   // fill current month from today
   useEffect(() => {
     const date = new Date();
-
+    let daysToBeRendered;
     const today = date.getDate();
     const lastDay = new Date(
       date.getFullYear(),
       date.getMonth() + 1,
       0,
     ).getDate();
+    if (lastDay - today < 8) {
+      const nextMonthLastDay = new Date(
+        date.getFullYear(),
+        date.getMonth() + 2,
+        0,
+      ).getDate();
+      daysToBeRendered = nextMonthLastDay + lastDay;
+      setTrackedMonthDate(new Date().getMonth() + 1);
+    } else {
+      daysToBeRendered = lastDay;
+    }
 
     const daysInMonth = [];
-    for (let i = today; i <= lastDay; i += 1) {
+    for (let i = today; i <= daysToBeRendered; i += 1) {
       const day = new Date(date.getFullYear(), date.getMonth(), i);
       daysInMonth.push({
         day,
         key: day.toISOString(),
       });
     }
-
-    setFirstMonthDays(daysGroupBy(daysInMonth, allTasks));
-  }, [allTasks]);
+    setDays(daysGroupBy(daysInMonth, allTasks));
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -74,11 +85,10 @@ const Calendar = () => {
         container.clientWidth
       ) {
         const nextMonthDate = new Date(
-          trackedMonthDate.getFullYear(),
-          trackedMonthDate.getMonth() + 1,
+          new Date().getFullYear(),
+          trackedMonthDate + 1,
           1,
         );
-        setTrackedMonthDate(nextMonthDate);
         // fill new month
         const lastDayNextMonth = new Date(
           nextMonthDate.getFullYear(),
@@ -101,7 +111,8 @@ const Calendar = () => {
         }
         const groupedDaysInNextMonth = daysGroupBy(daysInNextMonth, allTasks);
 
-        setDays([...firstMonthDays, ...groupedDaysInNextMonth]);
+        setDays([...days, ...groupedDaysInNextMonth]);
+        setTrackedMonthDate(nextMonthDate.getMonth());
       }
     };
 
@@ -110,16 +121,18 @@ const Calendar = () => {
     return () => {
       container.removeEventListener("scroll", checkScroll);
     };
-  }, [trackedMonthDate, allTasks, firstMonthDays, activeDay]);
+  }, [trackedMonthDate, allTasks]);
+
+  console.log(days);
 
   const onSetActive = (day) => {
     dispatch(activeDayAction.setActiveDay(day.getTime()));
   };
 
   return (
-    <div className={classes.calendar} ref={containerRef}>
-      <div className={classes["calendar-container"]}>
-        {(days.length === 0 ? firstMonthDays : days).map((day) => (
+    <div className={s.calendar} ref={containerRef}>
+      <div className={s["calendar-container"]}>
+        {days.map((day) => (
           <CalendarItem
             hasCompletedTasks={day.hasCompletedTasks}
             hasUncompletedTasks={day.hasUncompletedTasks}

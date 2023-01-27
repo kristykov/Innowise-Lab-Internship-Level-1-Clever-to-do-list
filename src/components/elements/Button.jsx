@@ -1,11 +1,9 @@
 import React from "react";
-import classes from "./Button.module.scss";
+import s from "./Button.module.scss";
 
 const Button = ({ children, type, onClick }) => (
   <button
-    className={`${classes.button} ${
-      type === "add-task" ? classes["add-task-btn"] : ""
-    }`}
+    className={`${s.button} ${type === "add-task" ? s["add-task-btn"] : ""}`}
     type={type}
     onClick={onClick}
   >

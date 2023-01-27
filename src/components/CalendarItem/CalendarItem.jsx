@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./CalendarItem.module.scss";
+import s from "./CalendarItem.module.scss";
 
 const CalendarItem = ({
   date,
@@ -10,8 +10,8 @@ const CalendarItem = ({
 }) => {
   const className =
     new Date(activeDay).toDateString() === date.toDateString()
-      ? classes.active
-      : classes["non-active"];
+      ? s.active
+      : s["non-active"];
 
   let weekDay = date.getDay();
 
@@ -42,9 +42,9 @@ const CalendarItem = ({
   }
 
   return (
-    <div className={classes["calendar-item"]}>
+    <div className={s["calendar-item"]}>
       <div
-        className={`${classes["calendar-item-container"]} ${className}`}
+        className={`${s["calendar-item-container"]} ${className}`}
         onClick={() => setActive(date)}
         aria-hidden="true"
       >
@@ -52,11 +52,9 @@ const CalendarItem = ({
         <p>{date.getDate()}</p>
         <p>{date.getMonth()}</p>
       </div>
-      <div className={classes["tasks-monitoring"]}>
-        {hasCompletedTasks && <span className={classes["tasks-completed"]} />}
-        {hasUncompletedTasks && (
-          <span className={classes["tasks-incompleted"]} />
-        )}
+      <div className={s["tasks-monitoring"]}>
+        {hasCompletedTasks && <span className={s["tasks-completed"]} />}
+        {hasUncompletedTasks && <span className={s["tasks-incompleted"]} />}
       </div>
     </div>
   );

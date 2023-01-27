@@ -2,8 +2,8 @@ import React from "react";
 import { useFirestore } from "react-redux-firebase";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import EditIcon from "../assets/edit.svg";
-import DeleteIcon from "../assets/delete.svg";
+import EditIcon from "../../assets/edit.svg";
+import DeleteIcon from "../../assets/delete.svg";
 
 const TaskListItem = ({ id, status, title }) => {
   const firestore = useFirestore();
@@ -34,7 +34,6 @@ const TaskListItem = ({ id, status, title }) => {
     <li className="task-list-item" key={id}>
       {status}
       <label htmlFor={`checkbox-${id}`} className="task-list-item-label">
-        {" "}
         {title}
         <input
           className="task-list-item-input"

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useFirestore } from "react-redux-firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { activeDay } from "../store/activeDay/activeDaySlice";
-import { monthTasksAction } from "../store/monthTasks/monthTasksSlice";
-import TaskListItem from "./TaskListItem";
+import { activeDay } from "../../store/activeDay/activeDaySlice";
+import { monthTasksAction } from "../../store/monthTasks/monthTasksSlice";
+import TaskListItem from "../TaskListItem/TaskListItem";
 
 import "./TaskList.scss";
 

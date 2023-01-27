@@ -3,32 +3,34 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { getFirebase } from "react-redux-firebase";
 import { useDispatch } from "react-redux";
-import { login } from "../store/auth/authSlice";
+import { login } from "../../store/auth/authSlice";
 import classes from "./Register.module.scss";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
-  // const [user, setUser] = useState(null);
   const [errorAuth, setErrorAuth] = useState(null);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
+    setLoading(true);
     const firebase = getFirebase();
     firebase
       .auth()
       .signInWithEmailAndPassword(data.email, data.password)
       .then((res) => {
         const userId = res.user.uid;
-        localStorage.setItem("UserId", userId);
-        dispatch(login({ userId }));
-        // setUser(userId);
+        localStorage.setItem("userId", userId);
+        dispatch(login(userId));
       })
       .then(() => {
         navigate("/home");
+        setLoading(false);
       })
       .catch((error) => {
+        setLoading(false);
         if (error.code === "auth/wrong-password") {
           setErrorAuth("Wrong Password");
         } else if (error.code === "auth/user-not-found") {
@@ -45,6 +47,7 @@ const Login = () => {
           className={classes["container-card-form"]}
           onSubmit={handleSubmit(onSubmit)}
         >
+          {loading && <p>Loading...</p>}
           <label htmlFor="email">
             <input
               className={classes["container-card-form-input"]}
@@ -71,7 +74,7 @@ const Login = () => {
             Login
           </button>
           <p className={classes["container-card-form-subtitle"]}>
-            Don&apos;t have an account?{" "}
+            Don&apos;t have an account?
             <a href="/register" className={classes["container-card-form-link"]}>
               Register here
             </a>
