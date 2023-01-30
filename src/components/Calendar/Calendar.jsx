@@ -70,8 +70,9 @@ const Calendar = () => {
         key: day.toISOString(),
       });
     }
-    setDays(daysGroupBy(daysInMonth, allTasks));
-  }, []);
+    const groupedDays = daysGroupBy(daysInMonth, allTasks);
+    setDays(groupedDays);
+  }, [allTasks]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -122,8 +123,6 @@ const Calendar = () => {
       container.removeEventListener("scroll", checkScroll);
     };
   }, [trackedMonthDate, allTasks]);
-
-  console.log(days);
 
   const onSetActive = (day) => {
     dispatch(activeDayAction.setActiveDay(day.getTime()));
