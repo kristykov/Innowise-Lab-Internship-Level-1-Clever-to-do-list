@@ -3,12 +3,12 @@ import "firebase/compat/firestore";
 import "firebase/compat/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAqJq251LxnMZVwBEZxcviU7Kluk9rRkXk",
-  authDomain: "to-do-47c88.firebaseapp.com",
-  projectId: "to-do-47c88",
-  storageBucket: "to-do-47c88.appspot.com",
-  messagingSenderId: "483597153569",
-  appId: "1:483597153569:web:7569f0a94981e39517ba60",
+  apiKey: "AIzaSyBNMF2YVRprIyb9MtDOGWGRvhJnFXFxzHo",
+  authDomain: "todo1-d9f75.firebaseapp.com",
+  projectId: "todo1-d9f75",
+  storageBucket: "todo1-d9f75.appspot.com",
+  messagingSenderId: "1091815435238",
+  appId: "1:1091815435238:web:404340228206bc2b00c427",
 };
 firebase.initializeApp(firebaseConfig);
 firebase.firestore().settings({ timestampsInSnapshots: true });
